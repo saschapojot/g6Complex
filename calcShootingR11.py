@@ -1,6 +1,6 @@
 from shootingR11Funcs import *
 import pandas as pd
-import scipy.special as sspecial
+
 
 ####values of g and E
 num = 500
@@ -13,7 +13,7 @@ EMax = 40.0
 # convert to lambda and F
 inDataAll = []  # contains [lambda, FEst]
 
-dE = 0.1
+dE = 0.05
 for g in gAll:
     for E in np.arange(0.1, EMax, dE):
         lmd = g ** (-5 / 6)
@@ -46,16 +46,16 @@ fig, ax = plt.subplots(figsize=(20, 20))
 ax.set_xscale("log")
 ax.set_ylabel("E")
 ax.set_xlabel("g")
-ax.set_title("Shooting eigenvalues for potential $V(x)=ix^{3}-gx^{4}$, region I-II")
+ax.set_title("Shooting eigenvalues for potential $V(x)=ix^{3}-gx^{4}$, region I-I")
 
 shootingScatter = ax.scatter(gShootingVals, EShootingVals, color="blue", marker=".", s=50, label="shooting")
 
 # lowerWKB5Sct=ax.scatter(gWKBSct,EWKBSct,color="red",marker="x",s=40,label="WKB lower $-igx^{5}$")
 plt.legend()
 
-plt.savefig("startL" + str(LEst) + "shootingR12" + str(dE) + "deleted.png")
+plt.savefig("startL" + str(LEst) + "shootingR11" + str(dE) + "deleted.png")
 plt.close()
 
 dataPdFrame = np.array([gShootingVals, EShootingVals]).T
 dfgE = pd.DataFrame(dataPdFrame, columns=["g", "E"])
-dfgE.to_csv("startL" + str(LEst) + "shootingR12.csv")
+dfgE.to_csv("startL" + str(LEst)+"deleted"+str(dE) + "shootingR11.csv")

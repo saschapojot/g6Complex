@@ -37,7 +37,7 @@ def oneStepRK4(lmd, F, h, yCurr, zCurr, vCurr):
     return zNext, vNext
 
 
-LEst = 4
+LEst = 6
 
 
 def calcBoundaryValue(F, *data):
